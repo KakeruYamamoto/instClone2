@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feeds
   get 'sessions/new'
   root to: 'sessions#new'
   # resources :favorites, only: [:create, :destroy]
