@@ -1,23 +1,33 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @feeds = Feed.all
   end
 
+
   def show
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   def new
-    @feed = Feed.new
+    if params[:back]
+      @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
   end
 
   def edit
   end
 
-  def create
+  def confirm
     @feed = Feed.new(feed_params)
+  end
 
+  def create
+    @feed = current_user.feeds.new(feed_params)
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
@@ -28,6 +38,7 @@ class FeedsController < ApplicationController
       end
     end
   end
+
 
   def update
     respond_to do |format|
@@ -41,6 +52,7 @@ class FeedsController < ApplicationController
     end
   end
 
+
   def destroy
     @feed.destroy
     respond_to do |format|
@@ -50,11 +62,13 @@ class FeedsController < ApplicationController
   end
 
   private
+
     def set_feed
       @feed = Feed.find(params[:id])
     end
 
+
     def feed_params
-      params.require(:feed).permit(:image, :content)
+      params.require(:feed).permit(:image, :image_cache, :content)# :image_cacheを追加d
     end
 end
