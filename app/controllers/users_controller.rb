@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-     @favorite = current_user.favorites.find_by(feed_id: @feed.id)
+    @user = User.find(params[:id])
   end
 
   def update
