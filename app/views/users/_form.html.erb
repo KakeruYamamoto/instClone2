@@ -11,7 +11,7 @@
     </div>
   <% end %>
     <div class="field">
-    <%= form.label :image %>
+    <h3><%= form.label :image, "プロフィール写真" %></h3>
     <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
