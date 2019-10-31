@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Feeds</h1>
+<h1>投稿一覧</h1>
 
 <table>
   <thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= image_tag feed.image.url, :size =>'100x100' %></td>
         <td><%= feed.content %></td>
-        <td><%= link_to 'Show', feed %></td>
-        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '記事を読む', feed %></td>
+        <td><%= link_to '編集', edit_feed_path(feed) %></td>
+        <td><%= link_to '削除', feed, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Feed', new_feed_path %>
+<%= link_to '記事一覧', new_feed_path %>
