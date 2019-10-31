@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>投稿一覧</h1>
-
+<p>ようこそ<%= current_user.name %>さん</p>
 <table>
   <thead>
     <tr>
@@ -17,7 +17,13 @@
         <td><%= image_tag feed.image.url, :size =>'100x100' %></td>
         <td><%= feed.content %></td>
         <td><%= link_to '記事を読む', feed %></td>
+
+        <% if feed.user_id == current_user.id %>        
         <td><%= link_to '編集', edit_feed_path(feed) %></td>
+        <% end %>
+
+
+
         <td><%= link_to '削除', feed, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>

@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @feed.user.name %>さんの投稿</h2>
+
 <p><strong>Image:</strong></p>
 <p><%= image_tag @feed.image.url %></p>
 
 <p><strong>Content:</strong></p>
 <p><%= @feed.content %></p>
+
 
 <% unless @feed.user_id == current_user.id %>
   <% if @favorite.present? %>

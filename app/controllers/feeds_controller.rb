@@ -1,9 +1,9 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]#, :index
-  before_action :correct_user, only: [:edit, :update]
+  before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
   def index
     @feeds = Feed.all
+
   end
 
 
@@ -20,6 +20,9 @@ class FeedsController < ApplicationController
   end
 
   def edit
+    if @feed.user_id != current_user.id
+      redirect_to feed_path
+    end
   end
 
   def confirm
@@ -72,10 +75,4 @@ class FeedsController < ApplicationController
     params.require(:feed).permit(:image, :image_cache, :content)
   end
 
-  def correct_user
-    user = Feed.find(params[:id])
-    if @feed.user_id != current_user.id
-      redirect_to feed_path, notice: 'ログインしてください'
-    end
-  end
 end
