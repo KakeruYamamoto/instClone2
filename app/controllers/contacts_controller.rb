@@ -33,8 +33,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /contacts/1
-  # PATCH/PUT /contacts/1.json
+
   def update
     respond_to do |format|
       if @contact.update(contact_params)
