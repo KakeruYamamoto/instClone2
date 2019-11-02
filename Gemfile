@@ -8,6 +8,8 @@ gem 'bcrypt', '3.1.11'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'faker'
+
 gem 'rails', '~> 5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
