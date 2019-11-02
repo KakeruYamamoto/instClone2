@@ -39,6 +39,11 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def favorite
+    @favorites = current_user.favorite_feeds.all
+  end
+
   private
 
   def set_user

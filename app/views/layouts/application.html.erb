@@ -15,9 +15,11 @@
         <%= link_to "プロフィール", user_path(current_user.id) %>
         <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
         <%= link_to "記事一覧", feeds_path %>
+        <%= link_to "お気に入り一覧", favorite_users_path %>
       <% else %>
         <%= link_to "アカウント作成", new_user_path %>
         <%= link_to "ログイン", new_session_path %>
+
       <% end %>
 
 
