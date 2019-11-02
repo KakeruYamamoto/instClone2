@@ -1,5 +1,13 @@
 {
   "name": "instClone",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "3",
+    "jquery": "^3.4.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KakeruYamamoto/instClone2.git",
+  "author": "kakeru <okinawan.kkr0713@icloud.com>",
+  "license": "MIT"
 }
