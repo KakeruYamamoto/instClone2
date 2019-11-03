@@ -16,8 +16,8 @@
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>
 
-  <p><%= f.label :image, "プロフィール写真" %></p>
-  <p><%= f.file_field :image %></p>
+  <div class="file_filed_label"><p><%= f.label :image, "プロフィール写真" %></p></div>
+  <div class="file_field_image"<p><%= f.file_field :image %></p></div>
 
   <p><%= f.label :password %></p>
   <p><%= f.password_field :password %></p>
