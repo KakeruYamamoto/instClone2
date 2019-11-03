@@ -2,14 +2,12 @@
   <% if feed.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(feed.errors.count, "error") %> 正しく入力されていません</h2>
-
-      <ul>
       <% feed.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p><%= message %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
+
     <div class="field">
     <%= form.label :image %>
     <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>

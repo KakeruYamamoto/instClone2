@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
-
   def show
   end
 
@@ -12,10 +11,8 @@ class ContactsController < ApplicationController
   def edit
   end
 
-
   def create
     @contact = Contact.new(contact_params)
-
     respond_to do |format|
       if @contact.save
         ContactMailer.contact_mail(@contact).deliver
@@ -28,7 +25,6 @@ class ContactsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @contact.update(contact_params)
@@ -40,7 +36,6 @@ class ContactsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @contact.destroy

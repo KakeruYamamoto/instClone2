@@ -1,43 +1,31 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <div class="field">
-    <h3><%= form.label :image, "プロフィール写真" %></h3>
-    <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="fild">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="fild">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="row">
+    <h2><%= pluralize(@user.errors.count, "つのエラーがあります") %> </h2>
+    <% @user.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
   </div>
 <% end %>
+
+<div class="row">
+<%= form_with(model: @user, local: true) do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
+
+  <p><%= f.label :email %></p>
+  <p><%= f.email_field :email %></p>
+
+  <p><%= f.label :image, "プロフィール写真" %></p>
+  <p><%= f.file_field :image %></p>
+
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Create my account" %></p>
+<% end %>
+<% end %>
+</div>

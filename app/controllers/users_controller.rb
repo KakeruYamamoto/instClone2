@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def favorite
     @favorites = current_user.favorite_feeds.all
   end
@@ -54,6 +53,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email,:image, :image_cache, :password,
                                  :password_confirmation)
   end
-
-
 end

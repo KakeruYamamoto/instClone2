@@ -3,9 +3,7 @@ class FeedsController < ApplicationController
 
   def index
     @feeds = Feed.all
-
   end
-
 
   def show
     @favorite = current_user.favorites.find_by(feed_id: @feed.id)
@@ -27,6 +25,7 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = Feed.new(feed_params)
+    render :new if @feed.invalid?
   end
 
   def create
@@ -42,7 +41,6 @@ class FeedsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -54,7 +52,6 @@ class FeedsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @feed.destroy
@@ -70,9 +67,7 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
   end
 
-
   def feed_params
     params.require(:feed).permit(:image, :image_cache, :content)
   end
-
 end
