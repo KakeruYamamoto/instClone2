@@ -17,7 +17,7 @@
   <p><%= f.email_field :email %></p>
 
   <div class="file_filed_label"><p><%= f.label :image, "プロフィール写真" %></p></div>
-  <div class="file_field_image"<p><%= f.file_field :image %></p></div>
+  <div class="file_field_image"<p><%= f.file_field :image , :size =>'100x100'%></p></div>
 
   <p><%= f.label :password %></p>
   <p><%= f.password_field :password %></p>

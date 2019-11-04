@@ -3,7 +3,7 @@
 <h2><%= @feed.user.name %>さんの投稿</h2>
 
 <p><strong>Image:</strong></p>
-<p><%= image_tag @feed.image.url %></p>
+<p><%= image_tag @feed.image.url , :size =>'100x100'%></p>
 
 <p><strong>Content:</strong></p>
 <p><%= @feed.content %></p>

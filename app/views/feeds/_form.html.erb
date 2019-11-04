@@ -9,9 +9,9 @@
   <% end %>
 
     <div class="field">
-    <%= form.label :image %>
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-    <%= form.file_field :image %>
+    <p><%= form.label :image %></p>
+    <%= image_tag(@feed.image.url, :size =>'100x100')if @feed.image && @feed.image.url %>
+    <%= form.file_field :image%>
     <%= form.hidden_field :image_cache %>
   </div>
 

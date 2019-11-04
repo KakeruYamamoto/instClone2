@@ -2,10 +2,12 @@
 
 <p><strong>プロフィール写真</strong></p>
 
-<p><%= image_tag @user.image.url %></p>
+<p><%= image_tag @user.image.url , :size =>'100x100'%></p>
 
 <p>メールアドレス: <%= @user.email %></p>
 
-<%# <% if @user.user_id == current_user.id %> %>
-<%= link_to '編集', edit_user_path(@user) %>
-<%# <% end %> %>
+<% if  logged_in? %>
+  <% if @user.id == current_user.id %>
+  <%= link_to '編集', edit_user_path(@user) %>
+  <% end %>
+<% end %>
