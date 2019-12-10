@@ -1,12 +1,12 @@
 <%= form_with(model: user, local: true) do |form| %>
-<% if @user.errors.any? %>
-  <div id="error_explanation" class="row">
-    <h2><%= pluralize(@user.errors.count, "つのエラーがあります") %> </h2>
-    <% @user.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
-    <% end %>
-  </div>
-<% end %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="row">
+      <h2><%= pluralize(@user.errors.count, "つのエラーがあります") %> </h2>
+      <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
 
 <div class="row">
 <%= form_with(model: @user, local: true) do |f| %>
