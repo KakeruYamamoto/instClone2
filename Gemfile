@@ -28,6 +28,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
    gem 'dotenv-rails'
+   gem 'rails-erd'
 end
 
 group :development do
