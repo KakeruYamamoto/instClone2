@@ -27,8 +27,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-   gem 'dotenv-rails'
-   gem 'rails-erd'
+  gem 'dotenv-rails'
+  gem 'rails-erd'
 end
 
 group :development do
