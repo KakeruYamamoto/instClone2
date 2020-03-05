@@ -8,7 +8,7 @@
     </div>
   <% end %>
 
-    <div class="field">
+  <div class="field">
     <p><%= form.label :image %></p>
     <%= image_tag(@feed.image.url, :size =>'100x100')if @feed.image && @feed.image.url %>
     <%= form.file_field :image%>

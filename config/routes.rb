@@ -9,10 +9,11 @@ Rails.application.routes.draw do
       get :favorite
     end
   end
-  
+
   resources :feeds do
     collection do
       post :confirm
     end
+    resources :comments
   end
 end
