@@ -1,15 +1,15 @@
-class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
 
-  def show
-  end
+class ContactsController < ApplicationController
+  before_action :set_contact, only: %i[show edit update destroy]
+
+  def show; end
 
   def new
     @contact = Contact.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @contact = Contact.new(contact_params)
@@ -43,5 +43,4 @@ class ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:name, :email, :content)
   end
-  
 end

@@ -1,1 +1,3 @@
-json.array! @feeds, partial: "feeds/feed", as: :feed
+# frozen_string_literal: true
+
+json.array! @feeds, partial: 'feeds/feed', as: :feed

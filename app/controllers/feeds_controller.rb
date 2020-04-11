@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :set_feed, only: %i[show edit update destroy]
 
   def index
     @feeds = Feed.all
@@ -12,17 +14,15 @@ class FeedsController < ApplicationController
   end
 
   def new
-    if params[:back]
-      @feed = Feed.new(feed_params)
-    else
-      @feed = Feed.new
-    end
+    @feed = if params[:back]
+              Feed.new(feed_params)
+            else
+              Feed.new
+            end
   end
 
   def edit
-    if @feed.user_id != current_user.id
-      redirect_to feed_path
-    end
+    redirect_to feed_path if @feed.user_id != current_user.id
   end
 
   def confirm
