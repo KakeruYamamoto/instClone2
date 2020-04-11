@@ -8,7 +8,6 @@ class FeedsController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(feed_id: @feed.id)
     @comments = @feed.comments
-    # binding.pry
     @comment = @feed.comments.build
   end
 
@@ -33,35 +32,24 @@ class FeedsController < ApplicationController
 
   def create
     @feed = current_user.feeds.new(feed_params)
-    respond_to do |format|
-      if @feed.save
-        format.html { redirect_to @feed, notice: '新しく投稿しました' }
-        format.json { render :show, status: :created, location: @feed }
-      else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
+    if @feed.save
+      redirect_to @feed, notice: '新しく投稿しました'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: '更新しました' }
-        format.json { render :show, status: :ok, location: @feed }
-      else
-        format.html { render :edit }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
+    if @feed.update(feed_params)
+      redirect_to @feed, notice: '更新しました'
+    else
+      render :edit
     end
   end
 
   def destroy
     @feed.destroy
-    respond_to do |format|
-      format.html { redirect_to feeds_url, notice: '削除されました' }
-      format.json { head :no_content }
-    end
+    redirect_to feeds_url, notice: '削除されました'
   end
 
   private
