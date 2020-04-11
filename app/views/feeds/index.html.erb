@@ -1,33 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>投稿一覧</h1>
-<p>ようこそ<%= current_user.name %>さん</p>
-<table  class="container">
-  <thead>
-    <tr class="row">
-      <th class="col-md1">Image</th>
-      <th class="col-md1">Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="overflow-auto mx-auto">
+  <div class="col mx-auto mb-4">
     <% @feeds.each do |feed| %>
-      <tr class="row">
-        <td><%= image_tag feed.image.url, :size =>'100x100' %></td>
-        <td><%= feed.content %></td>
-        <td><%= link_to '記事を読む', feed %></td>
-
-        <% if feed.user_id == current_user.id %>
-        <td><%= link_to '編集', edit_feed_path(feed) %></td>
-        <td><%= link_to '削除', feed, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      <div class="card" id="resize_card" >
+        <%= link_to feed,class: "feed_link" do %>
+          <div class="card-body">
+            <table>
+              <tr>
+                <td class="pic">
+                  <%= image_tag feed.user.image.url, size: '50x50', class: "account_pic" %>
+                </td>
+                <td class="name_and_content">
+                  <span class="account_name"><%= feed.user.name %>さん</span>
+                  <span class="account_name_thin"><%= feed.created_at.try(:strftime,"%Y年%m月%d日") %></span>
+                </td>
+                <% if logged_in? && current_user.id == feed.user.id %>
+                  <td class="edit">
+                    <%= link_to edit_feed_path(feed.id) do %>
+                      <%= image_tag "edit1.png", size: '14x14' %>
+                    <% end %>
+                  </td>
+                  <td class="edit">
+                  <%= link_to feed_path(feed.id), method: :delete ,data: { confirm: '投稿を削除しますか？' } do %>
+                    <%= image_tag "delete1.png", size: '14x14' %>
+                  <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            </table>
+            <p class="card-text"><%= feed.content.truncate(100) %></p>
+          </div>
+          <%= image_tag feed.image.url , class: "card-img-bottom" %>
         <% end %>
-      </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<p><%= link_to '新規投稿', new_feed_path %>
-  <%= link_to 'お問合せ', new_contact_path %></p>
+  </div>
+</div>
