@@ -10,28 +10,43 @@
   </head>
 
   <body>
-    <h1>InstClone</h1>
-    <header class="header" class="container" >
-      <ul class="row">
-      <% if logged_in? %>
-        <li class="col-md-3"><%= link_to "プロフィール", user_path(current_user.id) %></li>
-        <li class="col-md-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-        <li class="col-md-3"><%= link_to "記事一覧", feeds_path %></li>
-        <li class="col-md-3"><%= link_to "お気に入り一覧", favorite_users_path %></li>
-      <% else %>
-        <li class="col-md-6"><%= link_to "アカウント作成", new_user_path %></li>
-        <li class="col-md-6"><%= link_to "ログイン", new_session_path %></li>
-      <% end %>
-      </ul>
-    </header>
-
-    <div class="main" class="container">
-    <%= yield %>
-    </div>
-
-    <footer class="footer">
-    <p>運営会社INSTCLONE株式会社</p>
-    <p>© 2000 - 2019 Copyright INSTCLONE Corp.</p>
-    </footer>
+    <div class="container-fluid" id="wrapper">
+      <nav class="navbar navbar-expand-lg">
+        <%= link_to "InstaClone", feeds_path, class:"navbar-brand" %>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarForm" aria-controls="navbarForm" aria-expanded="false" aria-label="ナビゲーションの切替">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarForm">
+          <ul class="navbar-nav">
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= link_to "ホーム", feeds_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "プロフィール", user_path(current_user.id), class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お気に入り一覧", favorite_users_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "投稿", new_feed_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item" >
+              <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: { confirm: 'ログアウトしますか？' }, class:"nav-link"  %>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "ホーム", feeds_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ユーザ登録", new_user_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_session_path, class:"nav-link" %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+      <%= yield %>
   </body>
 </html>
