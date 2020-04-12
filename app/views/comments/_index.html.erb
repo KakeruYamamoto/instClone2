@@ -1,9 +1,20 @@
-<ul>
-  <% comments.each do |comment| %>
-    <% if comment.id.present? %>
-      <li>
-        <p><%= comment.content %></p>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="overflow-auto mx-auto">
+  <div class="col mx-auto mb-4">
+    <div class="card" id="resize_card" >
+      <div class="card-body index_comment">
+        <ul>
+          <% comments.each do |comment| %>
+            <% if comment.id.present? %>
+              <li>
+                <%= image_tag feed.user.image.url, size: '20x20', class: "account_pic" %>
+                <strong><%= comment.feed.user.name %></strong>
+                <%= feed.created_at.try(:strftime,"%Y年%m月%d日") %>
+                <p><%= comment.content %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
