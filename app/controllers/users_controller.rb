@@ -20,7 +20,9 @@ class UsersController < ApplicationController
     redirect_to user_path, notice: 'ログインしてください' if @user.id != current_user.id
   end
 
-  def show; end
+  def show
+    @feeds = Feed.order(created_at: :desc)
+  end
 
   def update
     if @user.update(user_params)
