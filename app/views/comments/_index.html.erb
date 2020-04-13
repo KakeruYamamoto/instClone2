@@ -6,8 +6,8 @@
           <% comments.each do |comment| %>
             <% if comment.id.present? %>
               <li>
-                <%= image_tag feed.user.image.url, size: '20x20', class: "account_pic" %>
-                <strong><%= comment.feed.user.name %></strong>
+                <%= image_tag comment.user.image.url, size: '20x20', class: "account_pic" %>
+                <strong><%= comment.user.name %></strong>
                 <%= feed.created_at.try(:strftime,"%Y年%m月%d日") %>
                 <p><%= comment.content %></p>
               </li>

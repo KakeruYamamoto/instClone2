@@ -9,7 +9,7 @@ class FeedsController < ApplicationController
 
   def show
     @favorite = current_user.favorites.find_by(feed_id: @feed.id)
-    @comments = @feed.comments
+    @comments = @feed.comments.order(created_at: :desc)
     @comment = @feed.comments.build
   end
 
