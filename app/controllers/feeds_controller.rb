@@ -8,7 +8,7 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id) if logged_in?
     @comments = @feed.comments.order(created_at: :desc)
     @comment = @feed.comments.build
   end

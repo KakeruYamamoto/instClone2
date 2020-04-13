@@ -20,7 +20,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <% if @feed.user_id == current_user.id %>
+    <% if logged_in? && @feed.user_id == current_user.id %>
       <p><%= link_to '編集', edit_feed_path(@feed),class: "btn btn-outline-danger" %></p>
     <% end %>
     <hr>
@@ -28,7 +28,7 @@
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, feed: @feed } %>
     </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment, feed: @feed } %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, feed: @feed } if logged_in? %>
     <br>
     <p><%= link_to '戻る', feeds_path ,class: "btn btn-outline-secondary" %></p>
   </div>
