@@ -11,7 +11,6 @@
     <% end %>
     <p><%= image_tag @user.image.url , :size =>'180x180' ,class: "image_icon" %></p>
     <% if @user.id == current_user.id %>
-      <p><%= link_to '受信BOX' , contacts_path,class: "btn btn-outline-info" %></p>
       <p><%= link_to 'ログアウト', session_path(current_user.id), method: :delete, data: { confirm: 'ログアウトしますか？' }, class: 'btn btn-danger' %></p>
       <p><%= link_to 'プロフィール編集', edit_user_path(@user),class: "btn btn-outline-secondary" %></p>
     <% end %>

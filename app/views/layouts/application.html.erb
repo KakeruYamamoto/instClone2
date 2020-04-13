@@ -31,6 +31,13 @@
             <li class="nav-item">
               <%= link_to "投稿", new_feed_path, class:"nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to "お問い合わせ", new_contact_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "受信確認", letter_opener_web_path, class:"nav-link" %>
+            </li>
+
             <li class="nav-item" >
               <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: { confirm: 'ログアウトしますか？' }, class:"nav-link"  %>
           <% else %>

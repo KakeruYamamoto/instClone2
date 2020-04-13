@@ -2,7 +2,7 @@
 
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show edit update destroy]
-
+  
   def show; end
 
   def new

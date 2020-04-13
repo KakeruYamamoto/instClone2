@@ -2,7 +2,7 @@
   <div class="event_show container">
     <br>
     <p id="notice"><%= notice %></p>
-    <h1>以下の内容を投稿しました！</h1>
+    <h1>受信メール</h1>
     <hr>
     <p>
       <strong>お名前:</strong>
@@ -17,6 +17,6 @@
       <%= @contact.content %>
     </p>
     <br>
-    <%= link_to '戻る', feeds_path,class: "btn btn-outline-secondary" %>
+    <%= link_to '戻る', :back,class: "btn btn-outline-secondary" %>
   </div>
 </div>

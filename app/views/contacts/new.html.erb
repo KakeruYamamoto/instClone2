@@ -1,5 +1,41 @@
-<h1>新規投稿</h1>
+<div class="text-center">
+  <div class="search_index container">
+    <br>
+    <h1>お問い合わせ</h1>
+    <hr>
+    <%= form_with(model: @contact, local: true) do |form| %>
+    <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "件") %> のエラーにより、このイベントを保存できませんでした</h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 
-<%= render 'form', contact: @contact %>
-
-<%= link_to 'Back', feeds_path %>
+    <br>
+    <div class="row justify-content-center">
+      <%= form.label :name %>
+      <%= form.text_field :name ,value: current_user.name, autocomplete: "お名前" ,class: "form-control",id: "inputUser",placeholder: "お名前" %>様
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <%= form.label :email ,"返信用のメールアドレス" %>
+      <%= form.text_field :email ,value: current_user.email, autocomplete: "email", autocomplete: "email" ,class: "form-control",id: "inputUser",placeholder: "メールアドレス" %>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <%= form.label :content,class: "sr-only" %>
+      <%= form.text_area :content , autocomplete: "content", autocomplete: "content" ,class: "form-control",id: "exampleFormControlTextarea1",rows: "5",placeholder: "お問い合わせ内容をご記入ください" %>
+    </div>
+    <br>
+    <div class="row justify-content-center col-xs-3">
+      <%= form.submit "送信", class: "btn btn-lg btn-primary" %>
+    </div>
+    <br>
+    <% end %>
+    <%= link_to '戻る', feeds_path,class: "btn btn-outline-secondary" %>
+  </div>
+</div>
