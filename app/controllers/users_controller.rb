@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: '新しくアカウントを作りました'
+      redirect_to feeds_path, notice: '新しくアカウントを作りました'
     else
       render :new
     end

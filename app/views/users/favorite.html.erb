@@ -10,27 +10,22 @@
     <hr>
     <% unless @favorites.present? %>
       <br>
-      <p>リストに何もありません。</p>
+      <p>お気に入りはありません。</p>
+      <br>
     <% else %>
-      <table id="event_list" >
-        <thead>
-          <tr>
-            <th>イメージ</th>
-            <th>タイトル</th>
-            <th>イベント開催日時</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @favorites.each do |feed| %>
-          <tr class="search_reslut" onclick='window.location="<%= '/feeds/' + feed.id.to_s %>"' role="link">
-            <td><%= image_tag feed.image.url, :size =>'100x100', class: "image_icon" %></td>
-            <td><%= feed.created_at.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日 %-H時%-M分") %>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="row center-block" >
+        <% @favorites.each do |feed| %>
+        <div class="card-deck col-sm-6 col-md-3 mt-5" id="feed_card3" >
+          <div class="card img-thumbnail">
+            <%= link_to feed,class: "feed_link" do %>
+              <%= image_tag feed.image.url , :size =>'450x300', class: "card-img-top" %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     <% end %>
+
     <br>
     <%= link_to '戻る', feeds_path,class: "btn btn-outline-secondary" %>
   </div>
