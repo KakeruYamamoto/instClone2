@@ -1,32 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<h2><%= @feed.user.name %>さんの投稿</h2>
-
-<p><strong>Image:</strong></p>
-<p><%= image_tag @feed.image.url , :size =>'100x100'%></p>
-
-<p><strong>Content:</strong></p>
-<p><%= @feed.content %></p>
-
-<p>コメント一覧（ここから下の内容が重要）</p>
-<!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
-<div id="comments_area">
-  <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-  <%= render partial: 'comments/index', locals: { comments: @comments, feed: @feed } %>
+<div class="text-center">
+  <div class="event_show container">
+  <br>
+    <p class="col-12">
+      <%= image_tag @feed.image.url , :size =>'320x480',class: "img-fluid" %>
+    </p>
+    <p>
+      <strong>投稿日時：</strong>
+      <%= @feed.created_at.try(:strftime,"%Y年%m月%d日") %>
+    </p>
+    <p>
+      <%= @feed.content %>
+    </p>
+    <% if logged_in? %>
+      <% unless @feed.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <%= link_to 'お気に入り解除', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+        <% else %>
+          <%= link_to 'お気に入り登録', favorites_path(feed_id: @feed.id), method: :post, class: 'btn btn-outline-success btn-sm' %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @feed.user_id == current_user.id %>
+      <p><%= link_to '編集', edit_feed_path(@feed),class: "btn btn-outline-danger" %></p>
+    <% end %>
+    <hr>
+    <p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, feed: @feed } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, feed: @feed } %>
+    <br>
+    <p><%= link_to '戻る', feeds_path ,class: "btn btn-outline-secondary" %></p>
+  </div>
 </div>
-<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-<%= render partial: 'comments/form', locals: { comment: @comment, feed: @feed } %>
-
-<% unless @feed.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(feed_id: @feed.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-
-<% if @feed.user_id == current_user.id %>
-  <%= link_to '編集', edit_feed_path(@feed) %>
-<% end %>
-
-<%= link_to '戻る', feeds_path %>

@@ -1,5 +1,9 @@
-<h1>新規投稿</h1>
-
-<%= render 'form', feed: @feed %>
-
-<%= link_to '戻る', feeds_path %>
+<div class="text-center">
+  <div class="container feed_show">
+    <br>
+    <h2>投稿する</h2>
+    <hr>
+    <%= render 'form' %>
+    <%= link_to '戻る', feeds_path ,class: "btn btn-outline-secondary" %>
+  </div>
+</div>

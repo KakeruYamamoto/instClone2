@@ -5,8 +5,6 @@ class CommentsController < ApplicationController
     # Blogをパラメータの値から探し出し,Blogに紐づくcommentsとしてbuildします。
     @feed = Feed.find(params[:feed_id])
     @comment = @feed.comments.build(comment_params)
-    # クライアント要求に応じてフォーマットを変更
-    # binding.pry
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -18,7 +16,6 @@ class CommentsController < ApplicationController
 
   private
 
-  # ストロングパラメーター
   def comment_params
     params.require(:comment).permit(:feed_id, :image, :image_cache, :content)
   end

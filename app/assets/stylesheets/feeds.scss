@@ -1,0 +1,91 @@
+
+a {
+  color: #000;
+
+  &:visited {
+    color: #666;
+  }
+
+  &:hover {
+    background-color: #E3E3E3;
+  }
+}
+
+a.feed_link {
+  text-decoration: none;
+}
+.feed_link {
+  &:hover {
+    opacity: 0.9;
+    background-color: #fff;
+  }
+}
+
+
+.event_link {
+  &:hover {
+    opacity: 0.7;
+    background-color: #E3E3E3;
+  }
+}
+
+.event_show {
+  text-align: left;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.search_index {
+  background-color: white;
+  padding: 20px;
+}
+#event_list{
+  margin:0 auto;
+}
+
+.search_reslut {
+  color: #000;
+}
+
+  p .image_icon {
+    border-style: solid;
+    border-width: thin;
+    border-color: #9C9C9D;
+  }
+
+  td .image_icon {
+    border-style: solid;
+    border-width: thin;
+    border-color: #9C9C9D;
+  }
+  .image_icon {
+    border-style: solid;
+    border-width: thin;
+    border-color: #9C9C9D;
+  }
+
+  .image_icon.img-fluid {
+    border-style: solid;
+    border-width: thin;
+    border-color: #9C9C9D;
+  }
+
+img.card-img-bottom {
+  height: 600px;
+}
+
+// スクロール高さ
+.overflow-auto.mx-auto.index_feed {
+  height: 100vh;
+}
+
+.feed_show {
+  background-color: white;
+}
+
+.col.mx-auto.mb-4.index_feed_content {
+  width: 750px;
+  padding: 0;
+}

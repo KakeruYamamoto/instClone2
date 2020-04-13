@@ -1,27 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>お気に入り一覧</h1>
-<p>ようこそ<%= current_user.name %>さん</p>
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @favorites.each do |feed| %>
-      <tr>
-        <td><%= image_tag feed.image.url, :size =>'100x100' %></td>
-        <td><%= feed.content %></td>
-        <td><%= link_to '記事を読む', feed %></td>
-      </tr>
+<div class="text-center">
+  <div class="search_index container">
+    <% require 'date' %>
+    <% date = Date.today %>
+    <% weeks = ["月","火","水","木","金","土","日"] %>
+    <% index = date.strftime("%u").to_i %>
+    <br>
+    <p id="notice"><%= notice %></p>
+    <h1>お気に入り一覧</h1>
+    <hr>
+    <% unless @favorites.present? %>
+      <br>
+      <p>リストに何もありません。</p>
+    <% else %>
+      <table id="event_list" >
+        <thead>
+          <tr>
+            <th>イメージ</th>
+            <th>タイトル</th>
+            <th>イベント開催日時</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorites.each do |feed| %>
+          <tr class="search_reslut" onclick='window.location="<%= '/feeds/' + feed.id.to_s %>"' role="link">
+            <td><%= image_tag feed.image.url, :size =>'100x100', class: "image_icon" %></td>
+            <td><%= feed.created_at.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日 %-H時%-M分") %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '戻る', feeds_path %>
+    <br>
+    <%= link_to '戻る', feeds_path,class: "btn btn-outline-secondary" %>
+  </div>
+</div>

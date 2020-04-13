@@ -48,5 +48,11 @@
         </div>
       </nav>
       <%= yield %>
+      <% unless action_name == "index" %>
+        <footer class="footer">
+          <p>運営会社EVENT KEEPER株式会社</p>
+          <p>Copyright © 2000-2020 EventKeeper All Rights Reserved.</p>
+        </footer>
+      <% end %>
   </body>
 </html>

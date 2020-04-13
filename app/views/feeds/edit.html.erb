@@ -1,6 +1,9 @@
-<h1>編集ページ</h1>
-
-<%= render 'form', feed: @feed %>
-
-
-<%= link_to '戻る', feeds_path %>
+<div class="text-center">
+  <div class="container feed_show">
+    <br>
+    <h2>投稿を編集</h2>
+    <hr>
+    <%= render 'form' %>
+    <%= link_to '戻る', feeds_path ,class: "btn btn-outline-secondary" %>
+  </div>
+</div>

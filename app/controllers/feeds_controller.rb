@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   before_action :set_feed, only: %i[show edit update destroy]
 
   def index
-    @feeds = Feed.all
+    @feeds = Feed.order(created_at: :desc)
   end
 
   def show

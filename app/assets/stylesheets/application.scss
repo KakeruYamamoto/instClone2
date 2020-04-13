@@ -15,52 +15,45 @@
  *= require_self
  */
 
- body{
-     text-align:center;
-     height: 900px;
- }
-body  .header{
-      font-size:20px;
-      font-weight:bold;
-      background-color: #DBDBDB;
-      padding: 25px;
-  }
 
-      .file_field_image {
-        font-size: 20px;
-        margin-left: 400px;
-      }
-  .container{
-      margin-top:20px;
-      padding-bottom: 100px;
-  }
-  .footer {
-   background-color: #DBDBDB;
-   width: 100%;
-   padding: 20px 0 10px 0;
-   color: white;
-   margin: auto;
-   padding-bottom: 10px;
-   position: absolute;
-   bottom: 0;
-  }
 
-  .footer p {
-    color: white;
-  }
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #E9EBEE;
+  padding-top:0px;
+}
+nav.navbar {
+  background-color: white;
+  border-bottom: solid thin #F5F5F5;
+}
 
-  html {
-   position: relative;
-   min-height: 100%;
- }
-
- li{
-    float: left;
+li{
     list-style:none;
-    color: black;
-    padding: 0px 10px;
- }
+}
 
-tbody {
-  text-align:center;
+ul{
+    padding:0;
+}
+#resize_card {
+  margin-bottom: 50px;
+}
+
+a {
+  color: black;
+}
+
+p {
+  word-break: break-all;
+}
+
+.footer {
+  text-align: center;
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  border-top: solid thin #F5F5F5;
+  margin-top: auto;
 }
