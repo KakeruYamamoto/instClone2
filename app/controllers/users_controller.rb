@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @feeds = Feed.order(created_at: :desc)
+    @feeds = current_user.feeds
   end
 
   def update
