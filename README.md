@@ -4,7 +4,7 @@
 ## Heroku：
 
 ## ホーム画面
-<img src="/db/fixtures/.png" width="650px">
+<img src="/db/fixtures/ホーム画面.png" width="650px">
 
 ## バージョン
 - Ruby 2.6.3
