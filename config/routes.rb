@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  root to: 'sessions#new'
+  root to: 'feeds#index'
   resources :contacts, only: %i[new create show]
   resources :favorites, only: %i[new create destroy]
   resources :sessions, only: %i[new create destroy]
@@ -19,4 +18,5 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
 end
