@@ -96,7 +96,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # letter_opener_web
-  config.action_mailer.default_url_options = { host: 'https://radiant-fjord-28025.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'https://radiant-fjord-28025.herokuapp.com/'}
   config.action_mailer.delivery_method = :letter_opener_web
 
 end
