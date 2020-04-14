@@ -40,37 +40,37 @@ test_user2 = User.create(name: name2,
                          password_confirmation: email2)
 
 test_user3 = User.create(name: name3,
-                        email: email3,
-                        image: open("#{Rails.root}/db/fixtures_icon/images#{rand(1..12)}.png"),
-                        password: email3,
-                        password_confirmation: email3)
-                        1
+                         email: email3,
+                         image: open("#{Rails.root}/db/fixtures_icon/images#{rand(1..12)}.png"),
+                         password: email3,
+                         password_confirmation: email3)
+
 # ユーザPOST１
-3.times do |n|
+3.times do |_n|
   content = Faker::ChuckNorris.fact
   feed1 = test_user1.feeds.build(
-          image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
-          content: content
-          )
+    image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
+    content: content
+  )
   feed1.save
 end
 
 # ユーザPOST２
-3.times do |n|
+3.times do |_n|
   content = Faker::ChuckNorris.fact
   feed2 = test_user2.feeds.build(
-          image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
-          content: content
-          )
+    image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
+    content: content
+  )
   feed2.save
 end
 
 # ユーザPOST３
-3.times do |n|
+3.times do |_n|
   content = Faker::ChuckNorris.fact
   feed3 = test_user3.feeds.build(
-          image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
-          content: content
-          )
+    image: open("#{Rails.root}/db/fixtures/img#{rand(1..12)}.jpg"),
+    content: content
+  )
   feed3.save
 end

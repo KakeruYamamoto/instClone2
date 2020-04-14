@@ -61,7 +61,6 @@ class FeedsController < ApplicationController
     redirect_to feeds_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
-
   private
 
   def set_feed
