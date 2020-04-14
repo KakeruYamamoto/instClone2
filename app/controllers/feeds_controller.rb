@@ -52,6 +52,16 @@ class FeedsController < ApplicationController
     redirect_to feeds_url, notice: '削除されました'
   end
 
+  def new_guest
+    user = User.find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.created_at = Time.now
+    end
+    session[:user_id] = user.id
+    redirect_to feeds_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+
   private
 
   def set_feed
