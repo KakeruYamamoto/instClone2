@@ -4,5 +4,9 @@
     <h2>ユーザ登録</h2>
     <%= render 'form', user: @user %>
     <br>
+    <p><%= link_to 'ログイン', new_session_path,class: "btn btn-outline-secondary btn-xs" %></p>
+    <br>
+    <p><%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_feeds_path, method: :post ,class: "btn btn-outline-success"%></p>
+    <br>
   </div>
 </div>
