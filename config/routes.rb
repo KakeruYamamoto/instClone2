@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root to: 'sessions#new'
   resources :contacts, only: %i[new create show]
   resources :favorites, only: %i[new create destroy]
