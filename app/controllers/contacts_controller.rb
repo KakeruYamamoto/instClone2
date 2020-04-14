@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-  before_action :set_contact, only: %i[show edit update destroy]
-  
+  before_action :set_contact, only: %i[show]
+
   def show; end
 
   def new
     @contact = Contact.new
   end
-
-  def edit; end
 
   def create
     @contact = Contact.new(contact_params)
@@ -19,19 +17,6 @@ class ContactsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def update
-    if @contact.update(contact_params)
-      redirect_to @contact, notice: 'Contact was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @contact.destroy
-    redirect_to contacts_url, notice: 'Contact was successfully destroyed.'
   end
 
   private
