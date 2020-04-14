@@ -1,7 +1,7 @@
 # README
 
 # DIC課題(3/6)：インスタグラムクローン
-## Heroku：
+## Heroku：https://radiant-fjord-28025.herokuapp.com/
 
 ## ホーム画面
 <img src="/db/fixtures/ホーム画面.png" width="650px">
