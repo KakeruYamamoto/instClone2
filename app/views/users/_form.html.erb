@@ -1,31 +1,53 @@
-<%= form_with(model: user, local: true,multipart: true) do |form| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation" class="row">
-      <h2><%= pluralize(@user.errors.count, "つのエラーがあります") %> </h2>
-      <% @user.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
+<div class="text-center">
+  <div class="container">
+    <br>
+    <%= form_with(model: user, local: true,multipart: true) do |form| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="row">
+          <h2><%= pluralize(@user.errors.count, "つのエラーがあります") %> </h2>
+          <% @user.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-
-<div class="row">
-<%= form_with(model: @user, local: true) do |f| %>
-  <p><%= f.label :name %></p>
-  <p><%= f.text_field :name %></p>
-
-  <p><%= f.label :email %></p>
-  <p><%= f.email_field :email %></p>
-
-  <div class="file_filed_label"><p><%= f.label :image, "プロフィール写真" %></p></div>
-  <div class="file_field_image"<p><%= f.file_field :image , :size =>'100x100'%></p></div>
-
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %></p>
-  <p><%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Create my account" %></p>
-<% end %>
-<% end %>
+      <%= form_with(model: @user, local: true) do |f| %>
+        <br>
+        <div class="row justify-content-center">
+          <%= image_tag @user.image.url,:size =>'180x180', id: :img_prev %>
+          <%= f.label :image,class: "sr-only" %><br />
+          <%= f.hidden_field :image_cache %>
+        </div>
+        <br>
+        <div class="file_field_btn">
+          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+          <%= f.label :name,class: "sr-only" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "お名前" ,class: "form-control",id: "inputUser",placeholder: "お名前" %>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+          <%= f.label :email,class: "sr-only" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", autocomplete: "email" ,class: "form-control",id: "inputUser",placeholder: "メールアドレス" %>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+          <%= f.label :password,class: "sr-only" %>
+          <%= f.password_field :password, autocomplete: "new-password" ,class: "form-control",id: "inputUser",placeholder: "パスワード (６文字以上) " %>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+          <%= f.label :password_confirmation,class: "sr-only" %><br/>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "form-control",id: "inputUser",placeholder: "確認用パスワード" %>
+        </div>
+        <br>
+        <div class="row justify-content-center col-xs-3">
+          <%= f.submit "登録" ,class: "btn btn-lg btn-primary "%>
+        </div>
+      <% end %>
+    <% end %>
+    <br>
+    <%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_feeds_path, method: :post ,class: "btn btn-outline-success"%>
+  </div>
 </div>
